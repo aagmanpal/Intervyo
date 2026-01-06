@@ -211,6 +211,7 @@ export default function LandingPage() {
               <a href="#how-it-works" className="hover:text-purple-400 transition">How It Works</a>
               <a href="#pricing">Pricing</a>
               <a href="#testimonials" className="hover:text-purple-400 transition">Testimonials</a>
+              <a href="/faq" className="hover:text-purple-400 transition">FAQ</a>
             </div>
 
             { token === null && 
