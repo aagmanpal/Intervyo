@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import {Link, useNavigate} from "react-router-dom"
-import {logo} from "../assets/intervyologo.png"
+import logo from "../assets/intervyologo.png"
 
 
 export default function LandingPage() {
@@ -207,9 +207,9 @@ export default function LandingPage() {
             </div>
             
             <div className="hidden md:flex items-center gap-8">
-              <a href="#features" className="hover:text-purple-400 transition">Features</a>
+              <a href="#features">Features</a>
               <a href="#how-it-works" className="hover:text-purple-400 transition">How It Works</a>
-              <a href="#pricing" className="hover:text-purple-400 transition">Pricing</a>
+              <a href="#pricing">Pricing</a>
               <a href="#testimonials" className="hover:text-purple-400 transition">Testimonials</a>
             </div>
 
@@ -496,9 +496,21 @@ export default function LandingPage() {
             <div>
               <h4 className="font-bold mb-4">Product</h4>
               <ul className="space-y-2 text-gray-400">
-                <li><a href="#" className="hover:text-white transition">Features</a></li>
-                <li><a href="#" className="hover:text-white transition">Pricing</a></li>
-                <li><a href="#" className="hover:text-white transition">FAQ</a></li>
+                <li>
+                  <a href="/#features" className="hover:text-white transition">
+                    Features
+                  </a>
+                </li>
+                <li>
+                  <a href="/#pricing" className="hover:text-white transition">
+                    Pricing
+                  </a>
+                </li>
+                <li>
+                  <a href="/faq" className="hover:text-white transition">
+                    FAQ
+                  </a>
+                </li>
               </ul>
             </div>
             
