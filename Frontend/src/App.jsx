@@ -19,6 +19,7 @@ import LearningHub from './components/Dashboard/LearningHub';
 import BlogPlatform from './components/Blogs/BlogPlatform';
 import Achievements from './components/Dashboard/Achievements';
 import AIChatbot from './components/Chatbot/AiChatBot';
+import Analytics from './pages/Analytics';
 import NotFound from './pages/NotFound';
 import ScrollToTop from './components/shared/ScrollToTop';
 
@@ -48,13 +49,21 @@ function App() {
         <Route path="/blog" element={<BlogPlatform />} />
         <Route path='/achievements' element={<Achievements />} />
         <Route 
-          path="/interview-setup" 
+          path="/analytics" 
           element={
             <ProtectedRoute>
-              <InterviewSetup />
+              <Analytics />
             </ProtectedRoute>
           } 
         />
+        <Route 
+        path="/interview-setup" 
+        element={
+          <ProtectedRoute>
+            <InterviewSetup />
+          </ProtectedRoute>
+        } 
+      />
         
         <Route 
           path="/interview/:interviewId" 
