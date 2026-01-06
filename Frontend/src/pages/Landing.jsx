@@ -207,9 +207,9 @@ export default function LandingPage() {
             </div>
             
             <div className="hidden md:flex items-center gap-8">
-              <a href="#features">Features</a>
+              <a href="#features" className="hover:text-purple-400 transition">Features</a>
               <a href="#how-it-works" className="hover:text-purple-400 transition">How It Works</a>
-              <a href="#pricing">Pricing</a>
+              <a href="#pricing" className="hover:text-purple-400 transition">Pricing</a>
               <a href="#testimonials" className="hover:text-purple-400 transition">Testimonials</a>
               <a href="/faq" className="hover:text-purple-400 transition">FAQ</a>
             </div>
