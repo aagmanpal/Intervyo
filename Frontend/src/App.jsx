@@ -19,6 +19,7 @@ import LearningHub from './components/Dashboard/LearningHub';
 import BlogPlatform from './components/Blogs/BlogPlatform';
 import Achievements from './components/Dashboard/Achievements';
 import AIChatbot from './components/Chatbot/AiChatBot';
+import FAQ from "./pages/FAQ";
 import Analytics from './pages/Analytics';
 import NotFound from './pages/NotFound';
 import ScrollToTop from './components/shared/ScrollToTop';
@@ -33,6 +34,7 @@ function App() {
         <Route path='/verify-email' element={<VerifyEmail />} />
         <Route path="/domain-selection" element={<DomainSelection />} />
         <Route path="/auth/callback" element={<AuthCallback />} />
+        <Route path="/faq" element={<FAQ />} />
         
         <Route 
           path="/dashboard" 

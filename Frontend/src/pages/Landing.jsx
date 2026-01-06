@@ -229,6 +229,7 @@ export default function LandingPage() {
               <a href="#how-it-works" className="hover:text-purple-400 transition">How It Works</a>
               <a href="#pricing" className="hover:text-purple-400 transition">Pricing</a>
               <a href="#testimonials" className="hover:text-purple-400 transition">Testimonials</a>
+              <a href="/faq" className="hover:text-purple-400 transition">FAQ</a>
             </div>
 
             {/* Mobile Menu Button */}
@@ -543,11 +544,23 @@ export default function LandingPage() {
             </div>
             
             <div>
-              <h4 className="font-bold mb-2 md:mb-4">Product</h4>
-              <ul className="space-y-1 md:space-y-2 text-gray-400">
-                <li><a href="#" className="hover:text-white transition text-sm md:text-base">Features</a></li>
-                <li><a href="#" className="hover:text-white transition text-sm md:text-base">Pricing</a></li>
-                <li><a href="#" className="hover:text-white transition text-sm md:text-base">FAQ</a></li>
+              <h4 className="font-bold mb-4">Product</h4>
+              <ul className="space-y-2 text-gray-400">
+                <li>
+                  <a href="/#features" className="hover:text-white transition">
+                    Features
+                  </a>
+                </li>
+                <li>
+                  <a href="/#pricing" className="hover:text-white transition">
+                    Pricing
+                  </a>
+                </li>
+                <li>
+                  <a href="/faq" className="hover:text-white transition">
+                    FAQ
+                  </a>
+                </li>
               </ul>
             </div>
             
