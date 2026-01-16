@@ -15,15 +15,7 @@ const PASSWORD_REQUIREMENTS = [
 const getStrength = (password) =>
   PASSWORD_REQUIREMENTS.filter((req) => req.test(password)).length;
 
-const PASSWORD_REQUIREMENTS = [
-  { id: 'length', label: '8+ Characters', test: (p) => p.length >= 8 },
-  { id: 'uppercase', label: 'Upper Case', test: (p) => /[A-Z]/.test(p) },
-  { id: 'number', label: 'Number', test: (p) => /[0-9]/.test(p) },
-  { id: 'special', label: 'Special Char', test: (p) => /[#?!@$%^&*-]/.test(p) },
-];
 
-// 2. Define getStrength here so it's available to the component
-const getStrength = (password) => PASSWORD_REQUIREMENTS.filter(req => req.test(password)).length;
 
 export default function Register() {
   const [step, setStep] = useState(1);
@@ -35,7 +27,7 @@ export default function Register() {
     domain: "",
     experience: "",
   });
-  
+
   // 3. MOVE THESE INSIDE THE COMPONENT
   // This allows them to "react" to changes in formData
   const currentStrength = getStrength(formData.password);
@@ -234,59 +226,59 @@ export default function Register() {
               </div>
 
               {/* --- PASSWORD FIELD --- */}
-<div className="space-y-2">
-  <label className="text-sm font-medium text-gray-300">Password</label>
-  <div className="relative">
-    <input
-      type={showPassword ? 'text' : 'password'}
-      name="password"
-      value={formData.password}
-      onChange={handleChange}
-      className="w-full px-4 py-3 rounded-lg bg-zinc-900 border border-zinc-700 text-white focus:ring-2 focus:ring-emerald-500 outline-none"
-    />
-    <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white">
-       {showPassword ? '👁️' : '👁️‍🗨️'}
-    </button>
-  </div>
+              <div className="space-y-2">
+                <label className="text-sm font-medium text-gray-300">Password</label>
+                <div className="relative">
+                  <input
+                    type={showPassword ? 'text' : 'password'}
+                    name="password"
+                    value={formData.password}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 rounded-lg bg-zinc-900 border border-zinc-700 text-white focus:ring-2 focus:ring-emerald-500 outline-none"
+                  />
+                  <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white">
+                    {showPassword ? '👁️' : '👁️‍🗨️'}
+                  </button>
+                </div>
 
-  {/* Strength Bars & Checklist */}
-  {formData.password.length > 0 && (
-    <div className="animate-in fade-in slide-in-from-top-2 duration-300">
-      <div className="flex gap-1 h-1 my-3">
-        {[1, 2, 3, 4].map((i) => (
-          <div key={i} className={`h-full flex-1 rounded-full transition-all duration-500 ${getStrength(formData.password) >= i ? (getStrength(formData.password) <= 2 ? 'bg-red-500' : getStrength(formData.password) === 3 ? 'bg-yellow-500' : 'bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.5)]') : 'bg-zinc-800'}`} />
-        ))}
-      </div>
-      <div className="grid grid-cols-2 gap-2 p-3 bg-zinc-900/50 rounded-lg border border-white/5">
-        {PASSWORD_REQUIREMENTS.map((req) => (
-          <div key={req.id} className="flex items-center gap-2">
-            <div className={`w-3 h-3 rounded-full ${req.test(formData.password) ? 'bg-emerald-500' : 'bg-zinc-700'} transition-colors`} />
-            <span className={`text-[10px] uppercase tracking-tighter ${req.test(formData.password) ? 'text-emerald-400' : 'text-zinc-500'}`}>{req.label}</span>
-          </div>
-        ))}
-      </div>
-    </div>
-  )}
-</div>
+                {/* Strength Bars & Checklist */}
+                {formData.password.length > 0 && (
+                  <div className="animate-in fade-in slide-in-from-top-2 duration-300">
+                    <div className="flex gap-1 h-1 my-3">
+                      {[1, 2, 3, 4].map((i) => (
+                        <div key={i} className={`h-full flex-1 rounded-full transition-all duration-500 ${getStrength(formData.password) >= i ? (getStrength(formData.password) <= 2 ? 'bg-red-500' : getStrength(formData.password) === 3 ? 'bg-yellow-500' : 'bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.5)]') : 'bg-zinc-800'}`} />
+                      ))}
+                    </div>
+                    <div className="grid grid-cols-2 gap-2 p-3 bg-zinc-900/50 rounded-lg border border-white/5">
+                      {PASSWORD_REQUIREMENTS.map((req) => (
+                        <div key={req.id} className="flex items-center gap-2">
+                          <div className={`w-3 h-3 rounded-full ${req.test(formData.password) ? 'bg-emerald-500' : 'bg-zinc-700'} transition-colors`} />
+                          <span className={`text-[10px] uppercase tracking-tighter ${req.test(formData.password) ? 'text-emerald-400' : 'text-zinc-500'}`}>{req.label}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
 
-{/* --- CONFIRM PASSWORD FIELD --- */}
-<div className="space-y-2 mt-4">
-  <label className="text-sm font-medium text-gray-300">Confirm Password</label>
-  <div className="relative">
-    <input
-      type={showConfirmPassword ? 'text' : 'password'}
-      name="confirmPassword"
-      value={formData.confirmPassword}
-      onChange={handleChange}
-      className={`w-full px-4 py-3 rounded-lg bg-zinc-900 border ${formData.confirmPassword && (formData.password === formData.confirmPassword ? 'border-emerald-500/50' : 'border-red-500/50')} text-white outline-none`}
-    />
-    {formData.confirmPassword && (
-      <span className={`absolute right-10 top-1/2 -translate-y-1/2 text-[10px] font-bold uppercase ${formData.password === formData.confirmPassword ? 'text-emerald-500' : 'text-red-500'}`}>
-        {formData.password === formData.confirmPassword ? 'Matched' : 'Mismatch'}
-      </span>
-    )}
-  </div>
-</div>
+              {/* --- CONFIRM PASSWORD FIELD --- */}
+              <div className="space-y-2 mt-4">
+                <label className="text-sm font-medium text-gray-300">Confirm Password</label>
+                <div className="relative">
+                  <input
+                    type={showConfirmPassword ? 'text' : 'password'}
+                    name="confirmPassword"
+                    value={formData.confirmPassword}
+                    onChange={handleChange}
+                    className={`w-full px-4 py-3 rounded-lg bg-zinc-900 border ${formData.confirmPassword && (formData.password === formData.confirmPassword ? 'border-emerald-500/50' : 'border-red-500/50')} text-white outline-none`}
+                  />
+                  {formData.confirmPassword && (
+                    <span className={`absolute right-10 top-1/2 -translate-y-1/2 text-[10px] font-bold uppercase ${formData.password === formData.confirmPassword ? 'text-emerald-500' : 'text-red-500'}`}>
+                      {formData.password === formData.confirmPassword ? 'Matched' : 'Mismatch'}
+                    </span>
+                  )}
+                </div>
+              </div>
             </div>
 
             <button
