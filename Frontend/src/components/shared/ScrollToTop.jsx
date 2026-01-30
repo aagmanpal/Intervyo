@@ -4,38 +4,54 @@ import { FaArrowUp } from "react-icons/fa";
 const ScrollToTop = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
 
-  // Show button when page is scrolled down
-  const toggleVisibility = () => {
-    if (window.pageYOffset > 300) {
-      setIsVisible(true);
-    } else {
-      setIsVisible(false);
-    }
+  const handleScroll = () => {
+    const scrollTop = window.scrollY;
+    const docHeight =
+      document.documentElement.scrollHeight -
+      document.documentElement.clientHeight;
+
+    const progress = Math.min((scrollTop / docHeight) * 100, 100);
+    setScrollProgress(progress);
+
+    setIsVisible(scrollTop > 300);
   };
 
-  // Scroll to top smoothly
   const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   useEffect(() => {
-    window.addEventListener("scroll", toggleVisibility);
-    return () => {
-      window.removeEventListener("scroll", toggleVisibility);
-    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Button styles - Positioned on the LEFT side to avoid chatbot overlap
-  const buttonStyles = {
+  const isComplete = scrollProgress >= 99.5;
+
+  // Progress ring
+  const wrapperStyles = {
     position: "fixed",
     bottom: "30px",
-    left: "30px", // Changed from right to left
-    width: "50px",
-    height: "50px",
+    left: "30px",
+    width: "56px",
+    height: "56px",
+    borderRadius: "50%",
+    background: `conic-gradient(
+      #10b981 ${scrollProgress}%,
+      rgba(255,255,255,0.15) ${scrollProgress}%
+    )`,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    zIndex: 9999,
+    animation: isComplete ? "glowPulse 1.6s ease-in-out infinite" : "none",
+  };
+
+  // Inner button
+  const buttonStyles = {
+    width: "46px",
+    height: "46px",
     borderRadius: "50%",
     backgroundColor: isHovered ? "#059669" : "#10b981",
     color: "white",
@@ -45,34 +61,49 @@ const ScrollToTop = () => {
     alignItems: "center",
     justifyContent: "center",
     boxShadow: isHovered
-      ? "0 6px 12px rgba(0, 0, 0, 0.3)"
-      : "0 4px 8px rgba(0, 0, 0, 0.2)",
-    zIndex: 9999,
+      ? "0 6px 12px rgba(0,0,0,0.3)"
+      : "0 4px 8px rgba(0,0,0,0.2)",
     transition: "all 0.3s ease",
-    opacity: isHovered ? 1 : 0.9,
-    transform: isHovered ? "translateY(-3px)" : "none",
     outline: "none",
   };
 
-  // Icon styles
   const iconStyles = {
     fontSize: "20px",
-    transition: "transform 0.3s ease",
     transform: isHovered ? "translateY(-2px)" : "none",
+    transition: "transform 0.3s ease",
   };
 
   return (
     <>
+      {/* Inject keyframes once */}
+      <style>
+        {`
+          @keyframes glowPulse {
+            0% {
+              box-shadow: 0 0 0 0 rgba(16,185,129,0.7);
+            }
+            70% {
+              box-shadow: 0 0 0 14px rgba(16,185,129,0);
+            }
+            100% {
+              box-shadow: 0 0 0 0 rgba(16,185,129,0);
+            }
+          }
+        `}
+      </style>
+
       {isVisible && (
-        <button
-          onClick={scrollToTop}
-          style={buttonStyles}
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
-          aria-label="Scroll to top"
-        >
-          <FaArrowUp style={iconStyles} />
-        </button>
+        <div style={wrapperStyles}>
+          <button
+            onClick={scrollToTop}
+            style={buttonStyles}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+            aria-label="Scroll to top"
+          >
+            <FaArrowUp style={iconStyles} />
+          </button>
+        </div>
       )}
     </>
   );
