@@ -142,7 +142,7 @@ export default function CookiePolicy() {
         </section>
 
         <p className="text-xs text-gray-400 mt-12">
-          Last updated: 7 January 2026
+          Last updated: 31 January 2026
         </p>
       </div>
     </div>
