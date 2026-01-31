@@ -164,14 +164,14 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link to="/faq" className="text-gray-400 hover:text-emerald-400 transition-colors text-sm">
-                  Help Center
+                <Link to="/cookie-policy" className="text-gray-400 hover:text-emerald-400 transition-colors text-sm">
+                  Cookie Policy
                 </Link>
               </li>
               <li>
-                <a href="#" className="text-gray-400 hover:text-emerald-400 transition-colors text-sm">
-                  Cookie Policy
-                </a>
+                <Link to="/faq" className="text-gray-400 hover:text-emerald-400 transition-colors text-sm">
+                  Help Center
+                </Link>
               </li>
             </ul>
           </div>

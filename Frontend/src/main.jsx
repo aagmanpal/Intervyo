@@ -11,6 +11,7 @@ import { Toaster } from "react-hot-toast";
 import { ThemeProvider } from "../src/components/shared/ThemeContext";
 import { NotificationProvider } from "./components/shared/NotificationContext.jsx";
 import { HelmetProvider } from 'react-helmet-async';
+
 const store = configureStore({
   reducer: rootReducer,
 });

@@ -34,6 +34,7 @@ import PracticeLab from './pages/PracticeLab';
 import Career from './pages/Career';
 import PricingPage from './pages/PricingPage';
 import QuizPage from './pages/QuizPage';
+import CookiePolicy from './pages/CookiePolicy';
 
 function App() {
   return (
@@ -53,7 +54,7 @@ function App() {
         <Route path="/contact" element={<ContactUs />} />
         <Route path="/career" element={<Career />} />
         <Route path="/pricing" element={<PricingPage />} />
-
+        <Route path="/cookie-policy" element={<CookiePolicy />} />
         <Route path="/domain-selection" element={<DomainSelection />} />
         <Route path="/leaderboard" element={<Leaderboard />} />
         <Route path="/blog" element={<BlogPlatform />} />
